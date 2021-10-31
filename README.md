@@ -10,3 +10,7 @@ On the “Add a Task” page, allow users to type in details about a new task, s
 The all tasks page should just be an image with a back button; it needs no functionality.
 
 ![image description](screenshots/android_app.png)
+
+![image description](screenshots/addTask.png)
+
+![image description](screenshots/allTask.png)
