@@ -1,16 +1,16 @@
-## Lab26
-The application should include those 3 activities:
-* Homepage
-The main page should be built out to match the wireframe. In particular, it should have a heading at the top of the page, an image to mock the “my tasks” view, and buttons at the bottom of the page to allow going to the “add tasks” and “all tasks” page.
+## Lab27
 
-* Add a Task
-On the “Add a Task” page, allow users to type in details about a new task, specifically a title and a body. When users click the “submit” button, show a “submitted!” label on the page.
+* Add 4 new buttons on the homepage (3 tasks and settings) and  2 other pages (settings and task detail).
+* When the user enter his name on the settings page it will appear on the home page tasks title.
+ * When he clicks on any task butoon he will be directed to the task detail page with the title of the task he cliked.
 
-* All Tasks
-The all tasks page should just be an image with a back button; it needs no functionality.
+ ![image description](screenshots/settings2.png)
 
-![image description](screenshots/android_app.png)
+![image description](screenshots/home.png)
 
-![image description](screenshots/addTask.png)
+![image description](screenshots/taskdetail.png)
 
-![image description](screenshots/allTask.png)
+![image description](screenshots/taskdetail2.png)
+
+
+
