@@ -11,8 +11,13 @@
     <string name="task_description">task_description</string>
     <string name="my_task">my_task</string>
     <string name="task_title">task_title</string>
-    <string name="title">Title</string>
     <string name="name">Name</string>
     <string name="save">Save</string>
     <string name="enter_your_name">Enter your name</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tasks">tasks</string>
+    <string name="state">state</string>
+    <string name="body">body</string>
+    <string name="title">Title</string>
 </resources>

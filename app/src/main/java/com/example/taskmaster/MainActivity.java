@@ -4,10 +4,14 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,49 +19,33 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button button = findViewById(R.id.button);
-        button.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, AddTask.class);
-            startActivity(intent);
-        });
-
-
-        Button button2 = findViewById(R.id.button2);
-        button2.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this, AllTasks.class);
-            startActivity(intent);
-        });
-
-        // lab 27
-        Button btn5 = findViewById(R.id.button5);
-            btn5.setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,TaskDetail.class);
-            String text = btn5.getText().toString();
-            intent.putExtra("task",text);
-            startActivity(intent);
-        });
-
-        findViewById(R.id.button6).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,TaskDetail.class);
-            Button btn6 = findViewById(R.id.button6);
-            String text = btn6.getText().toString();
-            intent.putExtra("task",text);
-            startActivity(intent);
-        });
-        findViewById(R.id.button7).setOnClickListener(view -> {
-            Intent intent = new Intent(MainActivity.this,TaskDetail.class);
-            Button btn7 = findViewById(R.id.button7);
-            String text = btn7.getText().toString();
-            intent.putExtra("task",text);
-            startActivity(intent);
-        });
 
         findViewById(R.id.button8).setOnClickListener(v -> {
-            Intent intent = new Intent(MainActivity.this,Settings.class);
+            Intent intent = new Intent(MainActivity.this, Settings.class);
             startActivity(intent);
         });
 
+        List<Task> tasks = new ArrayList<>();
+        tasks.add(new Task("Lab1", "Bitmap", "new"));
+        tasks.add(new Task("Lab2", "Codefellowship", "complete"));
+        tasks.add(new Task("Lab3", "Spring and REST", "in progress"));
 
+        RecyclerView allTasks = findViewById(R.id.ListOfTasks);
+
+        allTasks.setLayoutManager(new LinearLayoutManager(this));
+
+
+        allTasks.setAdapter(new TaskAdapter(tasks, new TaskAdapter.OnTaskItemClickListener() {
+            @Override
+            public void onItemClicked(int position) {
+                Intent intentTaskDetails = new Intent(getApplicationContext(), TaskDetail.class);
+                intentTaskDetails.putExtra("title", tasks.get(position).title);
+                intentTaskDetails.putExtra("body", tasks.get(position).body);
+                intentTaskDetails.putExtra("state", tasks.get(position).state);
+                startActivity(intentTaskDetails);
+
+            }
+        }));
     }
     @Override
     protected void onResume(){

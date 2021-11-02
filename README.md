@@ -1,16 +1,18 @@
-## Lab27
+## Lab28
 
-* Add 4 new buttons on the homepage (3 tasks and settings) and  2 other pages (settings and task detail).
-* When the user enter his name on the settings page it will appear on the home page tasks title.
- * When he clicks on any task butoon he will be directed to the task detail page with the title of the task he cliked.
+1- Create a Task class. A Task should have a title, a body, and a state. The state should be one of “new”, “assigned”, “in progress”, or “complete”.
 
- ![image description](screenshots/settings2.png)
+2- Refactor your homepage to use a RecyclerView for displaying Task data. This should have hardcoded Task data for now.
 
-![image description](screenshots/home.png)
+3- you can tap on any one of the Tasks in the RecyclerView, and it will appropriately launch the detail page with the correct Task title displayed.
 
-![image description](screenshots/taskdetail.png)
+ ![image description](screenshots/taskLists.png)
 
-![image description](screenshots/taskdetail2.png)
+ ![image description](screenshots/task2.png)
+
+![image description](screenshots/task3.png)
+
+![image description](screenshots/task4.png)
 
 
 
