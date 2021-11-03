@@ -9,12 +9,12 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.room.Room;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-
+    TaskDatabase taskDatabase;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,15 +25,17 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        List<Task> tasks = new ArrayList<>();
-        tasks.add(new Task("Lab1", "Bitmap", "new"));
-        tasks.add(new Task("Lab2", "Codefellowship", "complete"));
-        tasks.add(new Task("Lab3", "Spring and REST", "in progress"));
+        findViewById(R.id.addTaskBtn).setOnClickListener(v -> {
+            Intent intent = new Intent(MainActivity.this,TaskForm.class);
+            startActivity(intent);
+        });
+
+       taskDatabase = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "tasks").allowMainThreadQueries().fallbackToDestructiveMigration().build();
+        List<Task> tasks = taskDatabase.taskDao().getAll();
 
         RecyclerView allTasks = findViewById(R.id.ListOfTasks);
 
         allTasks.setLayoutManager(new LinearLayoutManager(this));
-
 
         allTasks.setAdapter(new TaskAdapter(tasks, new TaskAdapter.OnTaskItemClickListener() {
             @Override
