@@ -17,6 +17,15 @@ Ensure that the description and status of a tapped task are also displayed on th
 
  ![image description](screenshots/taskdetail29.png)
 
+## Lab 31
+
+Add Espresso to your application, and use it to test basic functionality of the main components of your application. For example:
+
+* assert that important UI elements are displayed on the page
+* tap on a task, and assert that the resulting activity displays the name of that task
+* edit the user’s username, and assert that it says the correct thing on the homepage
+
+ ![image description](screenshots/Tests.png)
 
 
 

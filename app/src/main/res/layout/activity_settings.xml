@@ -26,7 +26,6 @@
         android:autofillHints="name"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="@string/enter_your_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.343"
