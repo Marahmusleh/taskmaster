@@ -10,12 +10,12 @@ import java.util.List;
 
 @Dao
 public interface DaoTask {
-    @Query("SELECT * FROM task")
-    List<Task> getAll();
+    @Query("SELECT * FROM TaskOrg")
+    List<TaskOrg> getAll();
 
     @Insert
-    void insertAll(Task... tasks);
+    void insertAll(TaskOrg... taskOrgs);
 
     @Delete
-    void delete(Task task);
+    void delete(TaskOrg taskOrg);
 }

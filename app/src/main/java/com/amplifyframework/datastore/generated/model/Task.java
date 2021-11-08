@@ -1,20 +1,17 @@
 package com.amplifyframework.datastore.generated.model;
 
-import com.amplifyframework.core.model.temporal.Temporal;
-
-import java.util.List;
-import java.util.UUID;
-import java.util.Objects;
+import static com.amplifyframework.core.model.query.predicate.QueryField.field;
 
 import androidx.core.util.ObjectsCompat;
 
 import com.amplifyframework.core.model.Model;
-import com.amplifyframework.core.model.annotations.Index;
 import com.amplifyframework.core.model.annotations.ModelConfig;
 import com.amplifyframework.core.model.annotations.ModelField;
 import com.amplifyframework.core.model.query.predicate.QueryField;
+import com.amplifyframework.core.model.temporal.Temporal;
 
-import static com.amplifyframework.core.model.query.predicate.QueryField.field;
+import java.util.Objects;
+import java.util.UUID;
 
 /** This is an auto generated class representing the Task type in your schema. */
 @SuppressWarnings("all")
@@ -23,11 +20,11 @@ public final class Task implements Model {
   public static final QueryField ID = field("Task", "id");
   public static final QueryField TITLE = field("Task", "title");
   public static final QueryField BODY = field("Task", "body");
-  public static final QueryField STATUS = field("Task", "status");
+  public static final QueryField STATE = field("Task", "state");
   private final @ModelField(targetType="ID", isRequired = true) String id;
   private final @ModelField(targetType="String", isRequired = true) String title;
   private final @ModelField(targetType="String") String body;
-  private final @ModelField(targetType="String") String status;
+  private final @ModelField(targetType="String") String state;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime createdAt;
   private @ModelField(targetType="AWSDateTime", isReadOnly = true) Temporal.DateTime updatedAt;
   public String getId() {
@@ -42,8 +39,8 @@ public final class Task implements Model {
       return body;
   }
   
-  public String getStatus() {
-      return status;
+  public String getState() {
+      return state;
   }
   
   public Temporal.DateTime getCreatedAt() {
@@ -54,11 +51,11 @@ public final class Task implements Model {
       return updatedAt;
   }
   
-  private Task(String id, String title, String body, String status) {
+  private Task(String id, String title, String body, String state) {
     this.id = id;
     this.title = title;
     this.body = body;
-    this.status = status;
+    this.state = state;
   }
   
   @Override
@@ -72,7 +69,7 @@ public final class Task implements Model {
       return ObjectsCompat.equals(getId(), task.getId()) &&
               ObjectsCompat.equals(getTitle(), task.getTitle()) &&
               ObjectsCompat.equals(getBody(), task.getBody()) &&
-              ObjectsCompat.equals(getStatus(), task.getStatus()) &&
+              ObjectsCompat.equals(getState(), task.getState()) &&
               ObjectsCompat.equals(getCreatedAt(), task.getCreatedAt()) &&
               ObjectsCompat.equals(getUpdatedAt(), task.getUpdatedAt());
       }
@@ -84,7 +81,7 @@ public final class Task implements Model {
       .append(getId())
       .append(getTitle())
       .append(getBody())
-      .append(getStatus())
+      .append(getState())
       .append(getCreatedAt())
       .append(getUpdatedAt())
       .toString()
@@ -98,7 +95,7 @@ public final class Task implements Model {
       .append("id=" + String.valueOf(getId()) + ", ")
       .append("title=" + String.valueOf(getTitle()) + ", ")
       .append("body=" + String.valueOf(getBody()) + ", ")
-      .append("status=" + String.valueOf(getStatus()) + ", ")
+      .append("state=" + String.valueOf(getState()) + ", ")
       .append("createdAt=" + String.valueOf(getCreatedAt()) + ", ")
       .append("updatedAt=" + String.valueOf(getUpdatedAt()))
       .append("}")
@@ -130,7 +127,7 @@ public final class Task implements Model {
     return new CopyOfBuilder(id,
       title,
       body,
-      status);
+      state);
   }
   public interface TitleStep {
     BuildStep title(String title);
@@ -141,7 +138,7 @@ public final class Task implements Model {
     Task build();
     BuildStep id(String id);
     BuildStep body(String body);
-    BuildStep status(String status);
+    BuildStep state(String state);
   }
   
 
@@ -149,7 +146,7 @@ public final class Task implements Model {
     private String id;
     private String title;
     private String body;
-    private String status;
+    private String state;
     @Override
      public Task build() {
         String id = this.id != null ? this.id : UUID.randomUUID().toString();
@@ -158,7 +155,7 @@ public final class Task implements Model {
           id,
           title,
           body,
-          status);
+          state);
     }
     
     @Override
@@ -175,8 +172,8 @@ public final class Task implements Model {
     }
     
     @Override
-     public BuildStep status(String status) {
-        this.status = status;
+     public BuildStep state(String state) {
+        this.state = state;
         return this;
     }
     
@@ -192,11 +189,11 @@ public final class Task implements Model {
   
 
   public final class CopyOfBuilder extends Builder {
-    private CopyOfBuilder(String id, String title, String body, String status) {
+    private CopyOfBuilder(String id, String title, String body, String state) {
       super.id(id);
       super.title(title)
         .body(body)
-        .status(status);
+        .state(state);
     }
     
     @Override
@@ -210,8 +207,8 @@ public final class Task implements Model {
     }
     
     @Override
-     public CopyOfBuilder status(String status) {
-      return (CopyOfBuilder) super.status(status);
+     public CopyOfBuilder state(String state) {
+      return (CopyOfBuilder) super.state(state);
     }
   }
   

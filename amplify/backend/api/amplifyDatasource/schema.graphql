@@ -2,6 +2,6 @@ type Task @model {
   id: ID!
   title: String!
   body: String
-  status: String
+  state: String
 }
 

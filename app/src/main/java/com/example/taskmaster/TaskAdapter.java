@@ -13,11 +13,11 @@ import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
 
-    List<Task> allTasksData = new ArrayList<>();
+    List<TaskOrg> allTasksData = new ArrayList<>();
     private OnTaskItemClickListener onTaskItemClickListener;
 
 
-    public TaskAdapter(List<Task> allTasksData, OnTaskItemClickListener onTaskItemClickListener) {
+    public TaskAdapter(List<TaskOrg> allTasksData, OnTaskItemClickListener onTaskItemClickListener) {
         this.allTasksData = allTasksData;
         this.onTaskItemClickListener = onTaskItemClickListener;
     }
@@ -35,15 +35,15 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
     @Override
     public void onBindViewHolder(@NonNull TaskViewHolder holder, int position) {
 
-        holder.task = allTasksData.get(position);
+        holder.taskOrg = allTasksData.get(position);
 
         TextView title = holder.itemView.findViewById(R.id.titleFragment);
         TextView body = holder.itemView.findViewById(R.id.bodyFragment);
         TextView state = holder.itemView.findViewById(R.id.stateFragment);
 
-        title.setText(holder.task.title);
-        body.setText(holder.task.body);
-        state.setText(holder.task.state);
+        title.setText(holder.taskOrg.title);
+        body.setText(holder.taskOrg.body);
+        state.setText(holder.taskOrg.state);
     }
 
     @Override
@@ -54,7 +54,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
 
-        public Task task;
+        public TaskOrg taskOrg;
         View itemView;
 
         public TaskViewHolder(@NonNull View itemView, OnTaskItemClickListener listener) {

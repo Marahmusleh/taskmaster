@@ -26,7 +26,7 @@
         android:id="@+id/ShowName"
         android:layout_width="280dp"
         android:layout_height="53dp"
-        android:text="@string/tasks"
+        android:text="@string/taskOrgs"
         android:textColor="#F44336"
         android:textSize="34sp"
         android:textStyle="bold"
