@@ -41,6 +41,6 @@ Refactor your homepage’s RecyclerView to display all Task entities in DynamoDB
 
  #####  Data is posted and displayed based on DynamoDB status:
 
-  ![image description](screenshots/dynamodb.png)
+  ![image description](screenshots/dynamoDB.png)
 
 
