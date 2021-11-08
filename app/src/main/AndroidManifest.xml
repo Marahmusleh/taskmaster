@@ -12,7 +12,9 @@
         android:theme="@style/Theme.TaskMaster">
         <activity
             android:name=".TaskForm"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".MainActivity"
+            />
         <activity
             android:name=".Settings"
             android:exported="false" />

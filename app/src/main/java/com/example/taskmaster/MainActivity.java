@@ -60,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         allTasks.setLayoutManager(new LinearLayoutManager(this));
 
         List<TaskOrg> taskOrgs = new ArrayList<>();
+
         allTasks.setAdapter(new TaskAdapter(taskOrgs, new TaskAdapter.OnTaskItemClickListener() {
             @Override
             public void onItemClicked(int position) {
@@ -79,13 +80,11 @@ public class MainActivity extends AppCompatActivity {
                 return false;
             }
         });
-
         Amplify.API.query(
                 ModelQuery.list(Task.class),
                 response -> {
                     for (Task todo : response.getData()) {
                         TaskOrg taskOrg = new TaskOrg(todo.getTitle(),todo.getBody(),todo.getState());
-                        Log.i("graph testing", todo.getTitle());
                         taskOrgs.add(taskOrg);
                     }
                     handler.sendEmptyMessage(1);
