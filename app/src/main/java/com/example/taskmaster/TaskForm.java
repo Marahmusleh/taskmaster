@@ -30,11 +30,13 @@ public class TaskForm extends AppCompatActivity {
                     String title = taskTitle.getText().toString();
                     String body = taskBody.getText().toString();
                     String state = taskState.getText().toString();
-
+//
                     taskDatabase = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "tasks").allowMainThreadQueries().fallbackToDestructiveMigration().build();
 
                     Task task = new Task(title,body,state);
                     taskDatabase.taskDao().insertAll(task);
+
+
                     Intent goToHomePage = new Intent(TaskForm.this, MainActivity.class);
                     startActivity(goToHomePage);
                 }
