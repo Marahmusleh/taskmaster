@@ -8,16 +8,18 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.amplifyframework.datastore.generated.model.Task;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder>{
 
-    List<TaskOrg> allTasksData = new ArrayList<>();
+    List<Task> allTasksData = new ArrayList<>();
     private OnTaskItemClickListener onTaskItemClickListener;
 
 
-    public TaskAdapter(List<TaskOrg> allTasksData, OnTaskItemClickListener onTaskItemClickListener) {
+    public TaskAdapter(List<Task> allTasksData, OnTaskItemClickListener onTaskItemClickListener) {
         this.allTasksData = allTasksData;
         this.onTaskItemClickListener = onTaskItemClickListener;
     }
@@ -41,9 +43,9 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
         TextView body = holder.itemView.findViewById(R.id.bodyFragment);
         TextView state = holder.itemView.findViewById(R.id.stateFragment);
 
-        title.setText(holder.taskOrg.title);
-        body.setText(holder.taskOrg.body);
-        state.setText(holder.taskOrg.state);
+        title.setText(holder.taskOrg.getTitle());
+        body.setText(holder.taskOrg.getBody());
+        state.setText(holder.taskOrg.getState());
     }
 
     @Override
@@ -54,7 +56,7 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.TaskViewHolder
 
     public static class TaskViewHolder extends RecyclerView.ViewHolder {
 
-        public TaskOrg taskOrg;
+        public Task taskOrg;
         View itemView;
 
         public TaskViewHolder(@NonNull View itemView, OnTaskItemClickListener listener) {
