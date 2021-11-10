@@ -55,13 +55,13 @@
         android:id="@+id/button8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="100dp"
+        android:layout_marginEnd="96dp"
         android:text="Settings"
         app:backgroundTint="#8CE490"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.923" />
+        app:layout_constraintVertical_bias="0.913" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/ListOfTasks"
@@ -83,23 +83,23 @@
         app:backgroundTint="#8CE490"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.301"
+        app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ListOfTasks"
-        app:layout_constraintVertical_bias="0.736" />
+        app:layout_constraintVertical_bias="0.588" />
 
     <TextView
         android:id="@+id/viewteamNameId"
-        android:layout_width="150dp"
-        android:layout_height="42dp"
+        android:layout_width="223dp"
+        android:layout_height="69dp"
         android:text="TextView"
         android:textSize="35sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintHorizontal_bias="0.085"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintVertical_bias="0.771" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

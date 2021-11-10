@@ -24,7 +24,7 @@ public class Settings extends AppCompatActivity {
             EditText username = findViewById(R.id.username);
             String name = username.getText().toString();
             //send team name to main by sharedPreferences
-            RadioGroup radioGroup=findViewById(R.id.groupRadioButtonFromSettingId);
+            RadioGroup radioGroup=findViewById(R.id.groupbutton);
             RadioButton radioButton = findViewById(radioGroup.getCheckedRadioButtonId());
             String radioString=radioButton.getText().toString();
 

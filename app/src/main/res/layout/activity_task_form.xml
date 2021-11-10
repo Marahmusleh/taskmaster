@@ -55,29 +55,30 @@
         android:layout_width="137dp"
         android:layout_height="55dp"
         android:text="Submit"
+        android:background="@color/purple_200"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.81" />
+        app:layout_constraintVertical_bias="0.934" />
 
     <RadioButton
-        android:id="@+id/threeTeamIdAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/team3"
+        android:layout_width="133dp"
+        android:layout_height="42dp"
         android:text="Three team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.933"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="0.812" />
 
     <RadioButton
-        android:id="@+id/towTeamIdAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/team2"
+        android:layout_width="119dp"
+        android:layout_height="42dp"
         android:text="Tow team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -87,26 +88,28 @@
         app:layout_constraintVertical_bias="0.733" />
 
     <RadioButton
-        android:id="@+id/firstTeamIdAdd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/team1"
+        android:layout_width="116dp"
+        android:layout_height="40dp"
         android:text="First team"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.079"
+        app:layout_constraintHorizontal_bias="0.477"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.733" />
+        app:layout_constraintVertical_bias="0.643" />
 
     <TextView
         android:id="@+id/textView4"
-        android:layout_width="223dp"
-        android:layout_height="46dp"
+        android:layout_width="191dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="12dp"
+        android:background="@color/purple_200"
         android:text="Select the Team"
         android:textSize="25sp"
         app:layout_constraintBottom_toTopOf="@+id/radioGroup"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.601"
+        app:layout_constraintHorizontal_bias="0.552"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/stateInput"
         app:layout_constraintVertical_bias="0.604" />

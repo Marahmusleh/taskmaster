@@ -27,20 +27,19 @@ public class TaskForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_form);
 
-//save to db
-            EditText taskTitle = findViewById(R.id.titleInput);
-            EditText taskBody = findViewById(R.id.bodyInput);
+
+            EditText text = findViewById(R.id.titleInput);
+            EditText descp = findViewById(R.id.bodyInput);
             EditText taskState = findViewById(R.id.stateInput);
-            Button button = findViewById(R.id.submitTask);
+            Button submit = findViewById(R.id.submitTask);
 
 
-        RadioButton RadioButtonFirstTeam = findViewById(R.id.firstTeamIdAdd);
-        RadioButton RadioButtonSecondTeam = findViewById(R.id.towTeamIdAdd);
-        RadioButton RadioButtonThirdTeam = findViewById(R.id.threeTeamIdAdd);
+        RadioButton radioButton = findViewById(R.id.team1);
+        RadioButton radioButton1 = findViewById(R.id.team2);
+        RadioButton radioButton2 = findViewById(R.id.team3);
 
-        /// lab33 1. to get  team name data from data base
 
-        List<Team> allTeam = new ArrayList<>();
+        List<Team> teams = new ArrayList<>();
 
         Amplify.API.query(
                 ModelQuery.list(Team.class),
@@ -48,22 +47,20 @@ public class TaskForm extends AppCompatActivity {
                     for (Team team : response.getData()) {
                         Log.i("MyAmplifyApp", team.getName());
 
-                        allTeam.add(team);
+                        teams.add(team);
 
-
-                        System.out.println("here is the data all team " + allTeam);
                     }
-                    Log.i("MyAmplifyApp", "outside the loop");
+                    Log.i("MyAmplifyApp", "Teams added");
                 },
                 error -> Log.e("MyAmplifyApp", "Query failure", error)
         );
 
 
-            button.setOnClickListener(new View.OnClickListener() {
+            submit.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    String title = taskTitle.getText().toString();
-                    String body = taskBody.getText().toString();
+                    String title = text.getText().toString();
+                    String body = descp.getText().toString();
                     String state = taskState.getText().toString();
 ////
 //                    taskDatabase = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "tasks").allowMainThreadQueries().fallbackToDestructiveMigration().build();
@@ -73,38 +70,31 @@ public class TaskForm extends AppCompatActivity {
 
 
                     String teamName = "";
-                    if (RadioButtonFirstTeam.isChecked()) {
-//                            teamName = "First team";
-                        teamName=RadioButtonFirstTeam.getText().toString();
+                    if (radioButton.isChecked()) {
+                        teamName=radioButton.getText().toString();
+                    } else if (radioButton1.isChecked()) {
+                        teamName=radioButton1.getText().toString();
+                    } else if (radioButton2.isChecked()) {
+                        teamName=radioButton2.getText().toString();
 
-                    } else if (RadioButtonSecondTeam.isChecked()) {
-//                            teamName = "Tow team";
-                        teamName=RadioButtonSecondTeam.getText().toString();
-
-//
-                    } else if (RadioButtonThirdTeam.isChecked()) {
-//                            teamName = "Three team";
-                        teamName=RadioButtonThirdTeam.getText().toString();
-
-//
                     }
-                    Team selectedTeam=null;
-                    for (Team teams : allTeam) {
+                    Team checkecdTeam=null;
+                    for (Team teams : teams) {
                         if (teams.getName().equals(teamName)){
-                            selectedTeam = teams;
+                            checkecdTeam = teams;
                         }
 
                     }
 
-                                Task todo = Task.builder()
-                                        .title(title)
-                                        .teams(selectedTeam)
-                                        .body(body).state(state).build();
+                    Task task = Task.builder()
+                            .title(title)
+                            .teams(checkecdTeam)
+                            .body(body).state(state).build();
 
                                 Amplify.API.mutate(
-                                        ModelMutation.create(todo),
-                                        response2 -> Log.i("MyAmplifyApp", "Added Todo with id: " + response2.getData().getId()),
-                                        error -> Log.e("MyAmplifyApp", "Create failed", error)
+                                        ModelMutation.create(task),
+                                        response2 -> Log.i("MyAmplifyApp", "Task saved with id: " + response2.getData().getId()),
+                                        error -> Log.e("MyAmplifyApp", "failure", error)
                                 );
 
 
