@@ -64,5 +64,13 @@ Refactor your homepage’s RecyclerView to display all Task entities in DynamoDB
   ![image description](screenshots/Screenshot_7.png)
 
   ![image description](screenshots/Screenshot_8.png)
+  
+  ### Lab 34 
+
+Build an APK for your application: 
+- Click on Build .
+- Build Bundle / APK(s)
+- Build APk
+- then move the build file to the root of your repo.
 
 
