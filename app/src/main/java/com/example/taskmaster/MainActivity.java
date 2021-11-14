@@ -8,6 +8,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,11 +54,56 @@ public class MainActivity extends AppCompatActivity {
             Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
             Amplify.configure(getApplicationContext());
 
+
             Log.i("MyAmplifyApp", "Initialized Amplify");
         } catch (AmplifyException error) {
             Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
         }
+//        Amplify.Auth.fetchAuthSession(
+//                result -> Log.i("AmplifyQuickstart", result.toString()),
+//                error -> Log.e("AmplifyQuickstart", error.toString())
+//        );
+//        AuthSignUpOptions options = AuthSignUpOptions.builder()
+//                .userAttribute(AuthUserAttributeKey.email(), "altarifimara7@gmail.com")
+//                .build();
+//        Amplify.Auth.signUp("marah", "Password123", options,
+//                result -> Log.i("AuthQuickStart", "Result: " + result.toString()),
+//                error -> Log.e("AuthQuickStart", "Sign up failed", error)
+//        );
+//
+//        Amplify.Auth.confirmSignUp(
+//                "marah",
+//                "387813",
+//                result -> Log.i("AuthQuickstart", result.isSignUpComplete() ? "Confirm signUp succeeded" : "Confirm sign up not complete"),
+//                error -> Log.e("AuthQuickstart", error.toString())
+//        );
+
+//        Button signOut=findViewById(R.id.signOut);
+//        signOut.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Amplify.Auth.signOut(
+//                        () -> Log.i("AuthQuickstart", "Signed out successfully"),
+//                        error -> Log.e("AuthQuickstart", error.toString())
+//                );
+//            }
+//        });
+//    }
+        Button signOut=findViewById(R.id.signOut);
+        signOut.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Amplify.Auth.signOut(
+                        () -> Log.i("AuthQuickstart", "Signed out successfully"),
+                        error -> Log.e("AuthQuickstart", error.toString())
+                );
+                Intent intent = new Intent(MainActivity.this,SignUp.class);
+                startActivity(intent);
+            }
+
+        });
     }
+
     @Override
     protected void onStart() {
         super.onStart();
@@ -69,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<Task>teams=new ArrayList<>();
 
 
+
         allTasks.setAdapter(new TaskAdapter(teams, new TaskAdapter.OnTaskItemClickListener() {
             @Override
             public void onItemClicked(int position) {
@@ -79,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intentTaskDetails);
             }
         }));
+
+
+
 
         // ***********************lab 32 with lab33
 
@@ -122,6 +173,8 @@ public class MainActivity extends AppCompatActivity {
 
         TextView nameView = findViewById(R.id.ShowName);
         nameView.setText(userName +"'s" +" "+ "tasks");
+
+
     }
 
 
