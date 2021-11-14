@@ -56,6 +56,7 @@ public class SignIn extends AppCompatActivity {
                     Intent goToMain = new Intent(SignIn.this, MainActivity.class);
                     startActivity(goToMain);
                 },
+
                 error -> Log.e(TAG, "signIn: failed" + error.toString()));
     }
 

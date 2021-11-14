@@ -169,7 +169,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onResume(){
         super.onResume();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String userName = sharedPreferences.getString("username","X");
+        String userName = sharedPreferences.getString("userNameAPI","X");
+
+//        CharSequence myUserTitle = sharedPreferences.getString("userNameAPI", "");
+//        setTitle(myUserTitle + " Profile");
 
         TextView nameView = findViewById(R.id.ShowName);
         nameView.setText(userName +"'s" +" "+ "tasks");

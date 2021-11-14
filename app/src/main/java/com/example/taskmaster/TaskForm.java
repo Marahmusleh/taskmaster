@@ -96,8 +96,6 @@ public class TaskForm extends AppCompatActivity {
                                         response2 -> Log.i("MyAmplifyApp", "Task saved with id: " + response2.getData().getId()),
                                         error -> Log.e("MyAmplifyApp", "failure", error)
                                 );
-
-
                             Intent goToHomePage = new Intent(TaskForm.this, MainActivity.class);
                     startActivity(goToHomePage);
                 }

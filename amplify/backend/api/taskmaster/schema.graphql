@@ -5,7 +5,7 @@ type Team @model {
   allTask: [Task] @connection(keyName: "byTask", fields: ["id"])
 }
 
-type Task @model
+type Task @model @auth(rules: [{ allow: public }])
 @key(name: "byTask", fields: ["teamId", "title"]) {
   id: ID!
   teamId:ID!
