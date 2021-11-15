@@ -80,12 +80,12 @@
         <RadioButton
             android:layout_width="212dp"
             android:layout_height="65dp"
-            android:text="Tow team" />
+            android:text="Second team" />
 
         <RadioButton
             android:id="@+id/radioButton3"
             android:layout_width="218dp"
             android:layout_height="54dp"
-            android:text="Three team" />
+            android:text="Third team" />
     </RadioGroup>
 </androidx.constraintlayout.widget.ConstraintLayout>

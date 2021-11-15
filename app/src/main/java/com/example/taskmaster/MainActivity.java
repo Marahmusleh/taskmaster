@@ -30,11 +30,15 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     TaskDatabase taskDatabase;
+    private static final String TAG = "MainActivity";
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        configureAmplify();
 
         findViewById(R.id.button8).setOnClickListener(v -> {
             Intent intent = new Intent(MainActivity.this, Settings.class);
@@ -49,17 +53,7 @@ public class MainActivity extends AppCompatActivity {
 //       taskDatabase = Room.databaseBuilder(getApplicationContext(), TaskDatabase.class, "tasks").allowMainThreadQueries().fallbackToDestructiveMigration().build();
 //        List<Task> tasks = taskDatabase.taskDao().getAll();
 
-        try {
-            Amplify.addPlugin(new AWSDataStorePlugin());
-            Amplify.addPlugin(new AWSApiPlugin()); // stores things in DynamoDB and allows us to perform GraphQL queries
-            Amplify.configure(getApplicationContext());
-
-
-            Log.i("MyAmplifyApp", "Initialized Amplify");
-        } catch (AmplifyException error) {
-            Log.e("MyAmplifyApp", "Could not initialize Amplify", error);
-        }
-//        Amplify.Auth.fetchAuthSession(
+       //Amplify.Auth.fetchAuthSession(
 //                result -> Log.i("AmplifyQuickstart", result.toString()),
 //                error -> Log.e("AmplifyQuickstart", error.toString())
 //        );
@@ -89,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 //    }
-        Button signOut=findViewById(R.id.signOut);
+        Button signOut = findViewById(R.id.signOut);
         signOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -97,13 +91,11 @@ public class MainActivity extends AppCompatActivity {
                         () -> Log.i("AuthQuickstart", "Signed out successfully"),
                         error -> Log.e("AuthQuickstart", error.toString())
                 );
-                Intent intent = new Intent(MainActivity.this,SignUp.class);
+                Intent intent = new Intent(MainActivity.this, SignUp.class);
                 startActivity(intent);
             }
-
         });
     }
-
     @Override
     protected void onStart() {
         super.onStart();
@@ -113,8 +105,7 @@ public class MainActivity extends AppCompatActivity {
         allTasks.setLayoutManager(new LinearLayoutManager(this));
 
         List<Task> taskOrgs = new ArrayList<>();
-        ArrayList<Task>teams=new ArrayList<>();
-
+        ArrayList<Task> teams = new ArrayList<>();
 
 
         allTasks.setAdapter(new TaskAdapter(teams, new TaskAdapter.OnTaskItemClickListener() {
@@ -124,11 +115,10 @@ public class MainActivity extends AppCompatActivity {
                 intentTaskDetails.putExtra("title", teams.get(position).getTitle());
                 intentTaskDetails.putExtra("body", teams.get(position).getBody());
                 intentTaskDetails.putExtra("state", teams.get(position).getState());
+                intentTaskDetails.putExtra("img",teams.get(position).getImg());
                 startActivity(intentTaskDetails);
             }
         }));
-
-
 
 
         // ***********************lab 32 with lab33
@@ -141,9 +131,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SharedPreferences sharedPreferencest= PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String teamN=sharedPreferencest.getString("teamName","team name");
-        TextView textView=findViewById(R.id.viewteamNameId);
+        SharedPreferences sharedPreferencest = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+        String teamN = sharedPreferencest.getString("teamName", "team name");
+        TextView textView = findViewById(R.id.viewteamNameId);
         textView.setText(teamN);
 
         Amplify.API.query(
@@ -151,8 +141,8 @@ public class MainActivity extends AppCompatActivity {
                 response -> {
                     for (Task task : response.getData()) {
                         taskOrgs.add(task);
-                        for (int i = 0; i <taskOrgs.size() ; i++) {
-                            if(taskOrgs.get(i).getTeams().getName().equals(teamN)){
+                        for (int i = 0; i < taskOrgs.size(); i++) {
+                            if (taskOrgs.get(i).getTeams().getName().equals(teamN)) {
                                 teams.add(taskOrgs.get(i));
                             }
                         }
@@ -165,22 +155,68 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
     @Override
-    protected void onResume(){
+    protected void onResume() {
         super.onResume();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
-        String userName = sharedPreferences.getString("userNameAPI","X");
+        String userName = sharedPreferences.getString("userNameAPI", "X");
 
 //        CharSequence myUserTitle = sharedPreferences.getString("userNameAPI", "");
 //        setTitle(myUserTitle + " Profile");
 
         TextView nameView = findViewById(R.id.ShowName);
-        nameView.setText(userName +"'s" +" "+ "tasks");
-
-
+        nameView.setText(userName + "'s" + " " + "tasks");
+    }
+        private void configureAmplify () {
+            try {
+//                Log.i("MyAmplifyApp", "Initialized Amplify");
+//            Team team = Team.builder()
+//                    .name("First team")
+//                    .build();
+//
+//            Amplify.API.mutate(
+//                    ModelMutation.create(team),
+//                    response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+//            );
+//
+//            ///second team
+//
+//            Team teamTow = Team.builder()
+//                    .name("Second team")
+//                    .build();
+//
+//            Amplify.API.mutate(
+//                    ModelMutation.create(teamTow),
+//                    response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+//            );
+//
+//            ////third team hard coby
+//
+//            Team teamThree = Team.builder()
+//                    .name("Third team")
+//                    .build();
+//
+//            Amplify.API.mutate(
+//                    ModelMutation.create(teamThree),
+//                    response -> Log.i("MyAmplifyApp", "Added Todo with id: " + response.getData().getId()),
+//                    error -> Log.e("MyAmplifyApp", "Create failed", error)
+//
+//            );
+                Amplify.addPlugin(new AWSDataStorePlugin());
+                Amplify.addPlugin(new AWSApiPlugin());
+                Amplify.configure(getApplicationContext());
+                Log.i(TAG, "Successfully initialized Amplify plugins");
+            } catch (AmplifyException exception) {
+                Log.e(TAG, "Failed to initialize Amplify plugins: " + exception.toString());
+            }
+        }
     }
 
 
 
 
-}
+
+

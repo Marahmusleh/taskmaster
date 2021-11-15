@@ -1,4 +1,3 @@
-
 type Team @model {
   id: ID!
   name: String!
@@ -12,5 +11,6 @@ type Task @model @auth(rules: [{ allow: public }])
   title: String!
   body: String
   state: String
+  img:String
   teams: Team! @connection(fields: ["teamId"])
 }

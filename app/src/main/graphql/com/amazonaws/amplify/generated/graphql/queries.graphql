@@ -39,6 +39,7 @@ query GetTeam($id: ID!) {
         title
         body
         state
+        img
         _version
         _deleted
         _lastChangedAt
@@ -96,6 +97,7 @@ query SyncTasks(
       title
       body
       state
+      img
       teams {
         id
         name
@@ -122,6 +124,7 @@ query GetTask($id: ID!) {
     title
     body
     state
+    img
     teams {
       id
       name
@@ -154,6 +157,7 @@ query ListTasks(
       title
       body
       state
+      img
       teams {
         id
         name
