@@ -1,0 +1,16 @@
+type Team @model {
+  id: ID!
+  name: String!
+  allTask: [Task] @connection(keyName: "byTask", fields: ["id"])
+}
+
+type Task @model @auth(rules: [{ allow: public }])
+@key(name: "byTask", fields: ["teamId", "title"]) {
+  id: ID!
+  teamId:ID!
+  title: String!
+  body: String
+  state: String
+  img:String
+  teams: Team! @connection(fields: ["teamId"])
+}
