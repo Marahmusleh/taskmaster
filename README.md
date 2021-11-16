@@ -103,3 +103,8 @@ On the Task detail activity, if there is a file that is an image associated with
 ![image description](screenshots/detailPage.png)
 
 ![image description](screenshots/Screenshot_11.png)
+
+### Lab 38
+When a new task is created within a team, alert all users who are a part of that team about that new task.
+
+![image description](screenshots/notification.png)
