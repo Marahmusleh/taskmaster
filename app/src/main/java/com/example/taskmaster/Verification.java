@@ -8,6 +8,7 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.core.Amplify;
 
 public class Verification extends AppCompatActivity {
@@ -20,6 +21,7 @@ public class Verification extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_verification);
+        recored();
 
         EditText editText = findViewById(R.id.confirmationCode);
         Button verify = findViewById(R.id.verify);
@@ -48,6 +50,17 @@ public class Verification extends AppCompatActivity {
                 });
     }
 
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
+    }
     void silentSignIn(String username, String password) {
         Amplify.Auth.signIn(
                 username,

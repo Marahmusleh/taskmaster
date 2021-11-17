@@ -14,6 +14,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.analytics.AnalyticsEvent;
+import com.amplifyframework.analytics.pinpoint.AWSPinpointAnalyticsPlugin;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.auth.AuthUserAttributeKey;
 import com.amplifyframework.auth.cognito.AWSCognitoAuthPlugin;
@@ -32,6 +34,7 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         configureAmplify();
         createNotificationChannel();
+        recored();
 
 
         Button signUp = findViewById(R.id.btnlogin);
@@ -93,12 +96,24 @@ public class SignUp extends AppCompatActivity {
             notificationManager.createNotificationChannel(channel);
         }
     }
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
+    }
 
     private void configureAmplify() {
         // configure Amplify plugins
         try {
             Amplify.addPlugin(new AWSDataStorePlugin());
             Amplify.addPlugin(new AWSCognitoAuthPlugin());
+            Amplify.addPlugin(new AWSPinpointAnalyticsPlugin(getApplication()));
             Amplify.addPlugin(new AWSS3StoragePlugin());
             Amplify.addPlugin(new AWSApiPlugin());
             Amplify.configure(getApplicationContext());
@@ -107,5 +122,6 @@ public class SignUp extends AppCompatActivity {
             Log.e(TAG, "Failed to initialize Amplify plugins => " + exception.toString());
         }
     }
+
 
 }

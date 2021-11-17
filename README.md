@@ -108,3 +108,9 @@ On the Task detail activity, if there is a file that is an image associated with
 When a new task is created within a team, alert all users who are a part of that team about that new task.
 
 ![image description](screenshots/notification.png)
+
+### Lab 39
+
+Add Analytics to your amplify project. Create and send an Event whenever you launch intents that start new activities.
+
+![image description](screenshots/events.png)

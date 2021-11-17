@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.core.Amplify;
 
 public class SignIn extends AppCompatActivity {
@@ -21,7 +22,7 @@ public class SignIn extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
-
+        recored();
 
         Button signIn = findViewById(R.id.btnlogin);
         EditText username = findViewById(R.id.etemail);
@@ -58,6 +59,17 @@ public class SignIn extends AppCompatActivity {
                 },
 
                 error -> Log.e(TAG, "signIn: failed" + error.toString()));
+    }
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 
     @Override

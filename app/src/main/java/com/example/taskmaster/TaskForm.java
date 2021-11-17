@@ -11,6 +11,7 @@ import android.widget.RadioButton;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.api.graphql.model.ModelMutation;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
@@ -35,7 +36,7 @@ public class TaskForm extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_form);
-
+        recored();
 
         EditText text = findViewById(R.id.titleInput);
         EditText descp = findViewById(R.id.bodyInput);
@@ -125,6 +126,17 @@ public class TaskForm extends AppCompatActivity {
         chooseFile.setType("*/*");
         chooseFile = Intent.createChooser(chooseFile, "Choose a File");
         startActivityForResult(chooseFile, 1234);
+    }
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 
     @Override

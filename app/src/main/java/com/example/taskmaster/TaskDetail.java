@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.core.Amplify;
 
 import java.io.File;
@@ -18,6 +19,7 @@ public class TaskDetail extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_detail);
+        recored();
 
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
@@ -45,6 +47,20 @@ public class TaskDetail extends AppCompatActivity {
                         Log.i("MyAmplifyApp", "Successfully downloaded: " + result.getFile());},
                     error -> Log.e("MyAmplifyApp",  "Download Failure", error)
             );
+
+
         }
+
+    }
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 }

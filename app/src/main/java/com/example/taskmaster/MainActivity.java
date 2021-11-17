@@ -28,6 +28,7 @@ import com.amazonaws.mobileconnectors.pinpoint.targeting.TargetingClient;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfile;
 import com.amazonaws.mobileconnectors.pinpoint.targeting.endpointProfile.EndpointProfileUser;
 import com.amplifyframework.AmplifyException;
+import com.amplifyframework.analytics.AnalyticsEvent;
 import com.amplifyframework.api.aws.AWSApiPlugin;
 import com.amplifyframework.api.graphql.model.ModelQuery;
 import com.amplifyframework.core.Amplify;
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 configureAmplify();
                getPinpointManager(getApplicationContext());
                 assignUserIdToEndpoint();
+                recored();
 
                 findViewById(R.id.button8).setOnClickListener(v -> {
                     Intent intent = new Intent(MainActivity.this, Settings.class);
@@ -219,6 +221,18 @@ public class MainActivity extends AppCompatActivity {
         targetingClient.updateEndpointProfile(endpointProfile);
         Log.d(TAG, "Assigned user ID " + endpointProfileUser.getUserId() +
                 " to endpoint " + endpointProfile.getEndpointId());
+    }
+
+    public void recored(){
+        AnalyticsEvent event = AnalyticsEvent.builder()
+                .name("PasswordReset")
+                .addProperty("Channel", "SMS")
+                .addProperty("Successful", true)
+                .addProperty("ProcessDuration", 792)
+                .addProperty("UserAge", 120.3)
+                .build();
+
+        Amplify.Analytics.recordEvent(event);
     }
 
 
