@@ -36,6 +36,7 @@ public class TaskDetail extends AppCompatActivity {
             text3.setText(taskState);
 
             String img= extras.getString("img");
+
             Amplify.Storage.downloadFile(
                     "image",
                     new File(getApplicationContext().getFilesDir() + "/download.jpg"),

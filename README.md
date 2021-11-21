@@ -114,3 +114,13 @@ When a new task is created within a team, alert all users who are a part of that
 Add Analytics to your amplify project. Create and send an Event whenever you launch intents that start new activities.
 
 ![image description](screenshots/events.png)
+
+### Lab 41
+
+Add an intent filter to your application such that a user can hit the “share” button on an image in another application, choose TaskMaster as the app to share that image with, and be taken directly to the Add a Task activity with that image pre-selected.
+
+
+![image description](screenshots/imageShared.png)
+
+![image description](screenshots/sharedImage2.png)
+

@@ -1,11 +1,13 @@
 package com.example.taskmaster;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RadioButton;
 
 import androidx.annotation.Nullable;
@@ -37,6 +39,7 @@ public class TaskForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_form);
         recored();
+        shareImage();
 
         EditText text = findViewById(R.id.titleInput);
         EditText descp = findViewById(R.id.bodyInput);
@@ -137,6 +140,22 @@ public class TaskForm extends AppCompatActivity {
                 .build();
 
         Amplify.Analytics.recordEvent(event);
+    }
+
+    public void shareImage(){
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        ImageView image = findViewById(R.id.imgeViewId);
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (imageUri != null) {
+                    image.setImageURI(imageUri);
+                    image.setVisibility(View.VISIBLE);
+                }
+            }
+        }
     }
 
     @Override
