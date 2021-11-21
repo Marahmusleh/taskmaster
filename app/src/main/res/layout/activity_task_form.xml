@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TaskForm">
+
+    <EditText
+        android:id="@+id/titleInput"
+        android:layout_width="329dp"
+        android:layout_height="65dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Title"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/bodyInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <EditText
+        android:id="@+id/bodyInput"
+        android:layout_width="327dp"
+        android:layout_height="69dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Body"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/stateInput"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.696" />
+
+    <EditText
+        android:id="@+id/stateInput"
+        android:layout_width="321dp"
+        android:layout_height="72dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="State"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.454" />
+
+    <Button
+        android:id="@+id/submitTask"
+        android:layout_width="137dp"
+        android:layout_height="55dp"
+        android:background="@color/purple_200"
+        android:text="Submit"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.784"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.934" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="191dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="36dp"
+        android:background="@color/purple_200"
+        android:text="Select the Team"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.463"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/stateInput"
+        app:layout_constraintVertical_bias="0.604" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupId"
+        android:layout_width="250dp"
+        android:layout_height="162dp"
+        android:layout_marginBottom="96dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.422"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.75">
+
+        <RadioButton
+            android:id="@+id/team1"
+            android:layout_width="116dp"
+            android:layout_height="40dp"
+            android:text="First team" />
+
+        <RadioButton
+            android:id="@+id/team2"
+            android:layout_width="119dp"
+            android:layout_height="42dp"
+            android:text="Second team" />
+
+        <RadioButton
+            android:id="@+id/team3"
+            android:layout_width="133dp"
+            android:layout_height="42dp"
+            android:text="Third team" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/attacedFilId"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="attach"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.712"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.828" />
+
+    <ImageView
+        android:id="@+id/imgeViewId"
+        android:layout_width="161dp"
+        android:layout_height="135dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.087"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.971" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
