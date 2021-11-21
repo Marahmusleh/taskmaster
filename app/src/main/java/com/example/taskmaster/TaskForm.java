@@ -1,5 +1,6 @@
 package com.example.taskmaster;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -25,11 +26,14 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class TaskForm extends AppCompatActivity {
     String img = "";
+    String imageKey = null;
 
 
     TaskDatabase taskDatabase;
@@ -110,7 +114,7 @@ public class TaskForm extends AppCompatActivity {
                 Task task = Task.builder()
                         .title(title)
                         .teams(checkecdTeam)
-                        .img(img)
+                        .img(imageKey)
                         .body(body).state(state).build();
 
                 Amplify.API.mutate(
@@ -158,6 +162,7 @@ public class TaskForm extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -173,10 +178,14 @@ public class TaskForm extends AppCompatActivity {
             }
             exampleInputStream.close();
             outputStream.close();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd_MMMMM_yyyy_HH_mm_ss");
+            String imageName = formatter.format(new Date());
             Amplify.Storage.uploadFile(
-                    "image",
+                    imageName,
                     uploadFile,
-                    result -> Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey()),
+                    result -> {Log.i("MyAmplifyApp", "Successfully uploaded: " + result.getKey());
+                    imageKey = result.getKey();
+                    },
                     storageFailure -> Log.e("MyAmplifyApp", "Upload failed", storageFailure)
             );
         } catch (IOException e) {
