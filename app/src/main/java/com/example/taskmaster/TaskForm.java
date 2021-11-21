@@ -43,12 +43,12 @@ public class TaskForm extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_form);
         recored();
-        shareImage();
 
         EditText text = findViewById(R.id.titleInput);
         EditText descp = findViewById(R.id.bodyInput);
         EditText taskState = findViewById(R.id.stateInput);
         Button submit = findViewById(R.id.submitTask);
+
 
 
         RadioButton radioButton = findViewById(R.id.team1);
@@ -126,6 +126,22 @@ public class TaskForm extends AppCompatActivity {
                 startActivity(goToHomePage);
             }
         });
+
+
+        Intent intent = getIntent();
+        String action = intent.getAction();
+        String type = intent.getType();
+        ImageView image = findViewById(R.id.imgeViewId);
+        if (Intent.ACTION_SEND.equals(action) && type != null) {
+            if (type.startsWith("image/")) {
+                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
+                if (imageUri != null) {
+                    image.setImageURI(imageUri);
+                    image.setVisibility(View.VISIBLE);
+
+                }
+            }
+        }
     }
 
     private void getFileFromDevice() {
@@ -146,21 +162,8 @@ public class TaskForm extends AppCompatActivity {
         Amplify.Analytics.recordEvent(event);
     }
 
-    public void shareImage(){
-        Intent intent = getIntent();
-        String action = intent.getAction();
-        String type = intent.getType();
-        ImageView image = findViewById(R.id.imgeViewId);
-        if (Intent.ACTION_SEND.equals(action) && type != null) {
-            if (type.startsWith("image/")) {
-                Uri imageUri = (Uri) intent.getParcelableExtra(Intent.EXTRA_STREAM);
-                if (imageUri != null) {
-                    image.setImageURI(imageUri);
-                    image.setVisibility(View.VISIBLE);
-                }
-            }
-        }
-    }
+
+
 
     @SuppressLint("SimpleDateFormat")
     @Override
