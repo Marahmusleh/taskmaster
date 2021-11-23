@@ -30,10 +30,9 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/stateInput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.696" />
+        app:layout_constraintVertical_bias="0.757" />
 
     <EditText
         android:id="@+id/stateInput"
@@ -45,10 +44,9 @@
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.454" />
+        app:layout_constraintVertical_bias="0.342" />
 
     <Button
         android:id="@+id/submitTask"
@@ -79,6 +77,7 @@
         app:layout_constraintTop_toBottomOf="@+id/stateInput"
         app:layout_constraintVertical_bias="0.604" />
 
+
     <RadioGroup
         android:id="@+id/radioGroupId"
         android:layout_width="250dp"
@@ -89,7 +88,7 @@
         app:layout_constraintHorizontal_bias="0.422"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.75">
+        app:layout_constraintVertical_bias="0.6">
 
         <RadioButton
             android:id="@+id/team1"
@@ -109,7 +108,6 @@
             android:layout_height="42dp"
             android:text="Third team" />
     </RadioGroup>
-
 
     <Button
         android:id="@+id/attacedFilId"
@@ -133,6 +131,20 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.971" />
+
+
+    <Button
+        android:id="@+id/mapsId"
+        android:layout_width="135dp"
+        android:layout_height="41dp"
+        android:onClick="getLocation"
+        android:text="Location"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.742"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.744" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

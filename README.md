@@ -124,3 +124,14 @@ Add an intent filter to your application such that a user can hit the â€œshareâ€
 
 ![image description](screenshots/sharedImage2.png)
 
+## Lab 42
+
+* When the user adds a task, their location should be retrieved and included as part of the saved Task.
+
+* On the Task Detail activity, the location of a Task should be displayed if it exists.
+
+
+![image description](screenshots/location.png)
+
+![image description](screenshots/location2.png)
+

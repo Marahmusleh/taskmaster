@@ -11,6 +11,8 @@ subscription OnCreateTeam {
         body
         state
         img
+        lat
+        lon
         _version
         _deleted
         _lastChangedAt
@@ -39,6 +41,8 @@ subscription OnUpdateTeam {
         body
         state
         img
+        lat
+        lon
         _version
         _deleted
         _lastChangedAt
@@ -67,6 +71,8 @@ subscription OnDeleteTeam {
         body
         state
         img
+        lat
+        lon
         _version
         _deleted
         _lastChangedAt
@@ -91,6 +97,8 @@ subscription OnCreateTask {
     body
     state
     img
+    lat
+    lon
     teams {
       id
       name
@@ -119,6 +127,8 @@ subscription OnUpdateTask {
     body
     state
     img
+    lat
+    lon
     teams {
       id
       name
@@ -147,6 +157,8 @@ subscription OnDeleteTask {
     body
     state
     img
+    lat
+    lon
     teams {
       id
       name

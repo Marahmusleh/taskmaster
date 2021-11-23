@@ -34,6 +34,8 @@ import java.util.List;
 public class TaskForm extends AppCompatActivity {
     String img = "";
     String imageKey = null;
+    private double lat;
+    private double lon;
 
 
     TaskDatabase taskDatabase;
@@ -115,6 +117,7 @@ public class TaskForm extends AppCompatActivity {
                         .title(title)
                         .teams(checkecdTeam)
                         .img(imageKey)
+                        .lat(lat).lon(lon)
                         .body(body).state(state).build();
 
                 Amplify.API.mutate(
@@ -142,6 +145,10 @@ public class TaskForm extends AppCompatActivity {
                 }
             }
         }
+    }
+    public void getLocation(View view ){
+        Intent getLoc = new Intent(TaskForm.this, Maps.class);
+        startActivity(getLoc);
     }
 
     private void getFileFromDevice() {
