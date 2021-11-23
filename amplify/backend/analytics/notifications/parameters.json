@@ -1,0 +1,22 @@
+{
+    "appName": "notifications",
+    "roleName": "pinpointLambdaRole8642a653",
+    "cloudformationPolicyName": "cloudformationPolicy8642a653",
+    "cloudWatchPolicyName": "cloudWatchPolicy8642a653",
+    "pinpointPolicyName": "pinpointPolicy8642a653",
+    "authPolicyName": "pinpoint_amplify_8642a653",
+    "unauthPolicyName": "pinpoint_amplify_8642a653",
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "authRoleArn": {
+        "Fn::GetAtt": [
+            "AuthRole",
+            "Arn"
+        ]
+    },
+    "appId": "9abc4761efb14589b4ac2728dea53399"
+}
