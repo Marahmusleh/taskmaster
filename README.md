@@ -135,3 +135,8 @@ Add an intent filter to your application such that a user can hit the â€œshareâ€
 
 ![image description](screenshots/location2.png)
 
+## Lab 43
+
+Using Amplify and Pinpoint, add session analytics to your application.
+
+![image description](screenshots/Capture.PNG)
